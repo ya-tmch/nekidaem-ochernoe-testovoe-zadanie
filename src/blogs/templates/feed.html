@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ block.super }} - лента
+{% endblock %}
+
+{% block content %}
+    <h2>Лента</h2>
+
+    {% for post in posts %}
+        <article>
+            <header>
+                <a href="{% url 'blogs_post_url' post.id %}">{{ post.title|escape }}</a>
+                <span>{{ post.create_datetime }}</span>
+            </header>
+            <div>{{ post.text|escape }}</div>
+
+            {% if not post.read %}
+                <form method="post" action="{% url 'blogs_post_read_url' post.id %}">
+                    {% csrf_token %}
+                    <button>Пометить прочитанным</button>
+                </form>
+            {% else %}
+                Прочитано
+            {% endif %}
+            <hr>
+        </article>
+    {% endfor %}
+{% endblock %}

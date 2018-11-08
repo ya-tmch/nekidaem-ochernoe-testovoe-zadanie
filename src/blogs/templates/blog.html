@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ block.super }} - блог пользователя {{ blog.user.username|escape }}
+{% endblock %}
+
+{% block content %}
+
+    {% if is_my_blog %}
+        <h2>Мой блог</h2>
+    {% else %}
+        <h2>Блог пользователя {{ blog.user.username|escape }}</h2>
+    {% endif %}
+
+    {% if is_my_blog %}
+        <div>
+            <form action="{% url 'blogs_post_create_url' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="title">
+                <input type="text" name="text">
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    {% endif %}
+
+
+    {% for post in blog.posts.all %}
+        <article>
+            <header>
+                <a href="{% url 'blogs_post_url' post.id %}">{{ post.title|escape }}</a>
+                <span>{{ post.create_datetime }}</span>
+            </header>
+            <div>{{ post.text|escape }}</div>
+            <hr>
+        </article>
+    {% endfor %}
+{% endblock %}

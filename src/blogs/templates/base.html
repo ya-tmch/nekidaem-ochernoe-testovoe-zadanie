@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Блоги{% endblock %}</title>
+</head>
+<body>
+
+<header>
+    <h1>Текущий пользователь: {{ user.username }}</h1>
+    <nav>
+        <a href="{% url 'blogs_feed_url' %}">Лента</a>
+        <a href="{% url 'blogs_my_blog_url' %}">Мой блог</a>
+        <a href="{% url 'blogs_other_users_blogs_url' %}">Блоги других пользователей</a>
+        <a href="{% url 'logout' %}?next={% url 'blogs_feed_url' %}">Выйти</a>
+    </nav>
+</header>
+
+{% block content %}{% endblock %}
+</body>
+</html>

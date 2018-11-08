@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ block.super }} - пост {{ post.title|escape }}
+{% endblock %}
+
+{% block content %}
+    <h2>Пост {{ post.title|escape }}</h2>
+    <span>{{ post.create_datetime }}</span>
+    <div>{{ post.text|escape }}</div>
+{% endblock %}

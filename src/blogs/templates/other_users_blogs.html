@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Блоги</h2>
+
+    <section>
+        {% for blog in blogs %}
+            <article>
+                <a href="{% url 'blogs_blog_url' blog.id %}">Блог {{ blog.user.username }}</a>
+
+                {% if blog.subscribed %}
+                    <form method="post" action="{% url 'blogs_blog_unsubscribe_url' blog.id %}">
+                        {% csrf_token %}
+                        <button>Отписаться</button>
+                    </form>
+                {% else %}
+                    <form method="post" action="{% url 'blogs_blog_subscript_url' blog.id %}">
+                        {% csrf_token %}
+                        <button>Подписаться</button>
+                    </form>
+                {% endif %}
+            
+                <hr>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}
