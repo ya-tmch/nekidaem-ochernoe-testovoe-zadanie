@@ -16,7 +16,7 @@ class FeedView(TemplateView):
 
 
 class OtherUsersBlogsView(TemplateView):
-    template_name = 'other_users_blogs.html'
+    template_name = 'blogs.html'
 
     def get(self, request, *args, **kwargs):
         return self.render_to_response({'blogs': get_other_users_blogs(request.user)})
