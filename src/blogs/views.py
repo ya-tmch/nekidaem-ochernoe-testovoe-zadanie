@@ -47,6 +47,7 @@ class BlogSubscribeView(TemplateView):
 
 
 class BlogUnsubscribeView(TemplateView):
+
     def post(self, request, *args, **kwargs):
         unsubscribe_from_blog(request.user, kwargs['blog_id'])
         return redirect('blogs_other_users_blogs_url')
