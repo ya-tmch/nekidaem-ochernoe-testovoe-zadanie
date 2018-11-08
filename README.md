@@ -4,6 +4,8 @@ cd nekidaem-ochernoe-testovoe-zadanie
 
 docker-compose up --build
 
+http://localhost:8080/
+
 default users:
 
 login admin pass admin (superuser)
