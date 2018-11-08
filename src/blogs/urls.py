@@ -17,8 +17,6 @@ urlpatterns = [
 
         path('<int:blog_id>', login_required(BlogView.as_view()), name='blogs_blog_url'),
 
-        # path('<int:blog_id>/post', login_required(BlogPostView.as_view()), name='blogs_blog_post_create_url'),
-
         path('<int:blog_id>/subscribe', login_required(BlogSubscribeView.as_view()), name='blogs_blog_subscript_url'),
 
         path('<int:blog_id>/unsubscribe', login_required(BlogUnsubscribeView.as_view()),
