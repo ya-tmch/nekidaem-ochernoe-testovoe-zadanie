@@ -76,6 +76,7 @@ class BlogPostView(TemplateView):
 
 
 class BlogPostReadView(TemplateView):
+    
     def post(self, request, *args, **kwargs):
         mark_post_read(request.user, kwargs['post_id'])
         return redirect('blogs_feed_url')
